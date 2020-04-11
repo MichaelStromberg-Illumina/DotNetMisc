@@ -45,7 +45,7 @@ fi
 
 # build Nirvana
 cd /build/Nirvana
-dotnet publish -r $RUNTIME_ID= -c Release
+dotnet publish -r $RUNTIME_ID -c Release
 
 # build Downloader
 cd ../Downloader
