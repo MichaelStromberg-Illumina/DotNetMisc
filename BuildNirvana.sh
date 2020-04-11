@@ -35,10 +35,18 @@ then
 	sed -i "$SED_REPLACE" Downloader/Downloader.csproj
 fi
 
+# set the appropriate runtime ID
+RUNTIME_ID=linux-x64
+
+if [ $MAJOR_VER == "6" ]
+then
+	RUNTIME_ID=rhel.6-x64
+fi
+
 # build Nirvana
 cd /build/Nirvana
-dotnet publish -r rhel.6-x64 -c Release
+dotnet publish -r $RUNTIME_ID= -c Release
 
 # build Downloader
 cd ../Downloader
-dotnet publish -r rhel.6-x64 -c Release
+dotnet publish -r $RUNTIME_ID -c Release
