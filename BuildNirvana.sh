@@ -43,10 +43,13 @@ then
 	RUNTIME_ID=rhel.6-x64
 fi
 
+# get the git version
+NIRVANA_VER="$(git describe --long | cut -c2-)"
+
 # build Nirvana
 cd /build/Nirvana
-dotnet publish -r $RUNTIME_ID -c Release
+dotnet publish -r $RUNTIME_ID -c Release /property:Version=$NIRVANA_VER
 
 # build Downloader
 cd ../Downloader
-dotnet publish -r $RUNTIME_ID -c Release
+dotnet publish -r $RUNTIME_ID -c Release /property:Version=$NIRVANA_VER
