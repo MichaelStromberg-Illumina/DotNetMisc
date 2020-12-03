@@ -10,6 +10,7 @@ ENV BUILD_SH BuildNirvana.sh
 # effectively makes this CentOS 6.10
 RUN yum -y update && \
 yum -y upgrade && \
+yum -y install git && \
 yum clean all && \
 #
 # install .NET Core 3.1 SDK
