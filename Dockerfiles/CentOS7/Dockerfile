@@ -1,5 +1,5 @@
 # latest CentOS 7 docker image
-FROM centos:centos7.7.1908
+FROM centos:centos7.9.2009
 
 ENV GIT_REPO https://github.com/MichaelStromberg-Illumina/DotNetMisc/raw/master
 ENV BUILD_SH BuildNirvana.sh
