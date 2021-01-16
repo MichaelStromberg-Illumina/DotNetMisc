@@ -1,14 +1,16 @@
 # latest CentOS 6 docker image
-FROM centos:centos6.9
+FROM centos:centos6.10
 
-ENV GIT_REPO https://github.com/HelixGrind/DotNetMisc/raw/master
+ENV GIT_REPO https://raw.githubusercontent.com/MichaelStromberg-Illumina/DotNetMisc/master
+ENV BASE_REPO CentOS6-Base.repo
 ENV DOTNET_TGZ dotnet-sdk-3.1.201-rhel.6-x64.tar.gz
 ENV CURL_TGZ curl-7_45_0-RHEL6-x64.tgz
 ENV ICU_TGZ icu4c-57_1-RHEL6-x64.tgz 
 ENV BUILD_SH BuildNirvana.sh
 
-# effectively makes this CentOS 6.10
-RUN yum -y update && \
+# update our OS
+RUN curl -SL $GIT_REPO/$BASE_REPO -o /etc/yum.repos.d/CentOS-Base.repo && \
+yum -y update && \
 yum -y upgrade && \
 yum -y install git && \
 yum clean all && \
