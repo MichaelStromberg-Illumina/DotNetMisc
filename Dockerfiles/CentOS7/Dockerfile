@@ -6,7 +6,7 @@ ENV BUILD_SH BuildNirvana.sh
 
 RUN yum -y update && \
 rpm -Uvh https://packages.microsoft.com/config/centos/7/packages-microsoft-prod.rpm && \
-yum -y install dotnet-sdk-3.1 git && \
+yum -y install dotnet-sdk-5.0 git && \
 yum clean all && \
 #
 # create our mount point
