@@ -20,6 +20,12 @@ then
 	SED_REPLACE='s/<\/PropertyGroup>/  <PublishTrimmed>true<\/PublishTrimmed>\n    <IncludeAllContentForSelfExtract>true<\/IncludeAllContentForSelfExtract>\n    <PublishReadyToRun>true<\/PublishReadyToRun>\n    <PublishSingleFile>true<\/PublishSingleFile>\n  <\/PropertyGroup>\n  <ItemGroup>\n    <RuntimeHostConfigurationOption Include="System.Globalization.Invariant" Value="true" \/>\n  <\/ItemGroup>/g'
 	sed -i "$SED_REPLACE" Nirvana/Nirvana.csproj
 	sed -i "$SED_REPLACE" Downloader/Downloader.csproj
+
+	# remove executable status from Jasix and ReferenceSequence
+	grep -v "<OutputType>Exe</OutputType>" Jasix/Jasix.csproj > Jasix/Jasix.csproj.new
+	grep -v "<OutputType>Exe</OutputType>" ReferenceSequence/ReferenceSequence.csproj > ReferenceSequence/ReferenceSequence.csproj.new
+	mv Jasix/Jasix.csproj.new Jasix/Jasix.csproj
+	mv ReferenceSequence/ReferenceSequence.csproj.new ReferenceSequence/ReferenceSequence.csproj
 fi
 
 # set the appropriate runtime ID
